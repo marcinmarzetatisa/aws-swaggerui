@@ -1,4 +1,4 @@
-service: swaggerui
+service: wicketui
 
 plugins:
   - serverless-cloudformation-sub-variables
@@ -8,7 +8,7 @@ plugins:
 
 custom:
   # change the project and/or service name to have unique baseName, that is used as a Cognito auth domain
-  project: betterdev
+  project: test
   baseName: ${self:custom.project}-${self:provider.stage}-${self:service}
 
   scriptHooks:
@@ -35,6 +35,7 @@ custom:
 
 provider:
   name: aws
+  region: eu-central-1
   stage: ${opt:stage, 'dev'}
   stackName: ${self:custom.baseName}
 
@@ -51,7 +52,7 @@ functions:
             template:
               application/json: '{"statusCode": 200}'
           response:
-            template: '{"greeting": "Hello Swagger!"}'
+            template: '{"greeting": "Hello from new fantastic Wicket Swagger!"}'
             statusCodes:
               200:
                 pattern: ''
